@@ -3,4 +3,5 @@ Aqui vas agregando los cambios que hagas maximo
 Maximo entra
 
 31-07-2025 Ignaxhio: Añadido requirements.txt.. para instalar usa [pip install -r requirements.txt]
-        Maximo PC: Añadidas comentarios para identificar
+        Maximo PC: Añadidos comentarios para identificar
+        Ignaxhio: Añadidos mayor comentarios y librerias base
