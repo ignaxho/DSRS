@@ -7,3 +7,4 @@ Maximo entra
         Ignaxhio: Añadidos mayor comentarios y librerias base
         Maximo PC: Añadido Tokkens.env y dotenv
         Iganxhio: Mejorado Readme.md
+        Iganxhio: Iniciada clase keylogger y agregado Tokken

