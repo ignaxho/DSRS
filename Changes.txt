@@ -5,3 +5,4 @@ Maximo entra
 31-07-2025 Ignaxhio: Añadido requirements.txt.. para instalar usa [pip install -r requirements.txt]
         Maximo PC: Añadidos comentarios para identificar
         Ignaxhio: Añadidos mayor comentarios y librerias base
+        Maximo PC: Añadido Tokkens.env y dotenv
