@@ -6,3 +6,4 @@ Maximo entra
         Maximo PC: Añadidos comentarios para identificar
         Ignaxhio: Añadidos mayor comentarios y librerias base
         Maximo PC: Añadido Tokkens.env y dotenv
+        Iganxhio: Mejorado Readme.md
