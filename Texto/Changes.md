@@ -26,3 +26,4 @@ Cada entrada indica la fecha, quién hizo el cambio y qué se modificó.
 - Ignaxhio: Cambiado el formato del changes para poder ordenarlo de forma mas comoda.
 - Ignaxhio: Clase keylogger terminada y funcional, cambiado formate de logs y dividido entre mouse y teclado.
 - Ignaxhio: Agregado `Glosario.md` para ayudar a ordenar, archivos movidos a carpeta `Texto` para mantener orden.
+- Ignaxhio: Terminado y renombrado modulo syware (si lo escribi mal), arreglada libreria en `main.py`, actualizado `requierements.txt`.
