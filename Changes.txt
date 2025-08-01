@@ -8,3 +8,5 @@ Maximo entra
         Maximo PC: Añadido Tokkens.env y dotenv
         Iganxhio: Mejorado Readme.md
         Iganxhio: Iniciada clase keylogger y agregado Tokken
+        Ignaxhio: actualizado main.pyw para q corra de fondo, agregada funcion en keylogger que crea el archivo log, avanzada la funcionalidad
+        de keylogger.
