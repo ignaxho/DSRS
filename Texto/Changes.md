@@ -16,7 +16,7 @@ Cada entrada indica la fecha, quién hizo el cambio y qué se modificó.
 
 ## 31-07-2025
 
-- Ignaxhio: Añadido `requirements.txt` para instalar dependencias usando \`pip install -r requirements.txt`\.
+- Ignaxhio: Añadido `requirements.txt` para instalar dependencias usando `pip install -r requirements.txt`.
 - Maximo PC: Añadidos comentarios para identificar código.
 - Ignaxhio: Añadidos comentarios más detallados y librerías base.
 - Maximo PC: Añadido archivo `Tokens.env` y configuración con `dotenv`.
