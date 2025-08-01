@@ -20,3 +20,4 @@ Cada entrada indica la fecha, quién hizo el cambio y qué se modificó.
 - Ignaxhio: Iniciada clase keylogger y agregado token.
 - Ignaxhio: Actualizado `main.pyw` para que corra en segundo plano, agregada función en keylogger que crea el archivo `log.txt`, avanzada la funcionalidad del keylogger.
 - Ignaxhio: Cambiado el formato del changes para poder ordenarlo de forma mas comoda.
+- Ignaxhio: Clase keylogger terminada y funcional, cambiado formate de logs y dividido entre mouse y teclado.
