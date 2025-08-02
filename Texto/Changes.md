@@ -30,3 +30,6 @@ Cada entrada indica la fecha, quién hizo el cambio y qué se modificó.
 ## 01-08-2025
 
 - Ignaxhio: Terminado y renombrado modulo syware (si lo escribi mal), arreglada libreria en `main.py`, actualizado `requierements.txt`.
+
+## 02-08-2025 
+- maximo: se envio una foto en el avanse del bot de discor se esta terminando`main.py`para que el dueñio confirme la actualizasion.
