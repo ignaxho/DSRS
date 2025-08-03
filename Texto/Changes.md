@@ -32,4 +32,9 @@ Cada entrada indica la fecha, quién hizo el cambio y qué se modificó.
 - Ignaxhio: Terminado y renombrado modulo syware (si lo escribi mal), arreglada libreria en `main.py`, actualizado `requierements.txt`.
 
 ## 02-08-2025 
-- maximo: se envio una foto en el avanse del bot de discor se esta terminando`main.py`para que el dueñio confirme la actualizasion.
+
+- maximo: Se envio una foto en el avanse del bot de discord se esta terminando `main.py` para que el dueñio confirme la actualizacion.
+
+## 03-08-2025
+
+- Ignaxhio: Arreglada busqueda de .env, arreglado stuck en inicio de bot y ordenado `change.md` (arregladas faltas ortograficas) , mas cambios pendientes.

