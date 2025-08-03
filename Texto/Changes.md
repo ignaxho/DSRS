@@ -38,3 +38,4 @@ Cada entrada indica la fecha, quién hizo el cambio y qué se modificó.
 ## 03-08-2025
 
 - Ignaxhio: Arreglada busqueda de .env, arreglado stuck en inicio de bot y ordenado `change.md` (arregladas faltas ortograficas) , mas cambios pendientes.
+- Ignaxhio: Arreglado cagaso.
