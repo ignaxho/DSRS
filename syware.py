@@ -6,6 +6,7 @@ from time import time
 from datetime import datetime
 import cv2 as cv
 import numpy as np
+import threading as trd
 
 # Video n screenshots #
 
@@ -22,7 +23,7 @@ class screenshot:
         self.image = f"takensend/image/Imagen {self.datetime}.jpg"
         
         print("Tomando captura")
-        pyautogui.screenshot(self.image)
+        pyautogui.screenshot(self.image, None, True)
     
     def checkpath(self):
         if not os.path.exists(self.imagepath):
@@ -36,7 +37,10 @@ class videotake:
         self.rawdatetime = datetime.now()
         self.datetime = self.rawdatetime.strftime("%d_%m_%Y_%H_%M_%S")
     
-    
+    def start_video_thread(self):
+        video_thread = trd.Thread(target=self.takensavev)
+        video_thread.start()
+        
     def takensavev(self):
         self.start_time = time()
         self.fourcc = cv.VideoWriter_fourcc(*'XVID')
@@ -75,12 +79,18 @@ class camtake:
         self.rawdatetime = datetime.now()
         self.datetime = self.rawdatetime.strftime("%d_%m_%Y_%H_%M_%S")
         self.cam = cv.VideoCapture(0)
+        self.cam2 = cv.VideoCapture(1)
+        self.cam3 = cv.VideoCapture(2)
+        self.cam4 = cv.VideoCapture(3)
         pass
     
     def takecamphoto(self):
         if self.cam.isOpened(): 
             ret, frame = self.cam.read()
             cv.imwrite((os.path.join(self.campath, f"Camara {self.datetime}.jpg")), frame)
+        if self.cam2.isOpened():
+            ret, frame = self.cam2.read()
+            cv.imwrite((os.path.join(self.campath, f"Camara2 {self.datetime}.jpg")), frame)
         else:
             print("Camara no encontrada")
             return
@@ -97,14 +107,14 @@ def main():
     camara.checkpath()
     camara.takecamphoto()
     
+    video = videotake()
+    video.checkpath()
+    video.start_video_thread()
+    
     screen = screenshot()
     screen.checkpath()
     screen.takensave()
-
-    video = videotake()
-    video.checkpath()
-    video.takensavev()
-
+    
 if __name__ == "__main__":
     
     main()

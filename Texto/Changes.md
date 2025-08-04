@@ -39,3 +39,4 @@ Cada entrada indica la fecha, quién hizo el cambio y qué se modificó.
 
 - Ignaxhio: Arreglada busqueda de .env, arreglado stuck en inicio de bot y ordenado `change.md` (arregladas faltas ortograficas) , mas cambios pendientes.
 - Ignaxhio: Arreglado cagaso.
+- Ignaxhio: Agregado Threading para evitar el estancamiento del codigo, agregado captura de todas las panatallas, agregadas capturas 2 camaras si existen (Falta arreglo), Solucionados bugs menores, me cago en todo.

