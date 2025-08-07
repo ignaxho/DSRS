@@ -41,3 +41,4 @@ Cada entrada indica la fecha, quién hizo el cambio y qué se modificó.
 - Ignaxhio: Arreglado cagaso.
 - Ignaxhio: Agregado Threading para evitar el estancamiento del codigo, agregado captura de todas las panatallas, agregadas capturas 2 camaras si existen (Falta arreglo), Solucionados bugs menores, me cago en todo.
 - Ignaxhio: Eliminados permisos de administrador.
+- Ignaxhio: Puras weas.
