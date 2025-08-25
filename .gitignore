@@ -1,0 +1,11 @@
+# Ignorar directorios de caché de Python
+__pycache__/
+_pycache_/
+
+# Ignorar la carpeta takensend en cualquier nivel
+takensend/
+**/takensend/
+**/__pycache__/keylogger.cpython-313.pyc
+**/__pycache__/syware.cpython-313.pyc
+**/Rouxls/__pycache__/__init__.cpython-313.pyc
+**/Rouxls/__pycache__/main_rouxls.cpython-313.pyc
